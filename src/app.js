@@ -1,4 +1,3 @@
-
 var restify = require('restify');
 var server = restify.createServer();
 var Comic = require('./models/db');
@@ -30,7 +29,3 @@ server.get('/comics', function(req, res, next){
 server.listen(port, function(){
 	console.log("%s listening on port %s", server.name, port);
 });
-
-
-
-

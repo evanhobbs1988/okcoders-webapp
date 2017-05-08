@@ -2,11 +2,14 @@
   "name": "project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-  	"start": "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ethan Wood",
-  "license": "ISC"
+  "author": "Ethan Wood  Alli Campbell Evan Hobbes",
+  "license": "ISC",
+  "dependencies": {
+    "restify": "^4.3.0"
+  }
 }
