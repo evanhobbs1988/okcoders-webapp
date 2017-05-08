@@ -1,31 +1,23 @@
-var restify = require('restify');
-var server = restify.createServer();
-var Comic = require('./models/db');
-const port = 8088;
+'use strict'
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/comics');
-var db = mongoose.connection;
+var express = require('express');
+//create instance of restify server 
+var app = express();
 
-db.once('open', function(){
-	console.log('Mongoose connection established');
-});
+//serve static files in public directory, use a slash as first parameter
+app.use('/', express.static('public'));
 
-server.get('/', restify.serveStatic({
-	directory: './client', 
-	default: "index.html"
-}));
+//First Route for API to return Json object
+app.get('/api/comic' , function( req, res){
+	res.json({comic:[]});
+})
 
-server.get('/comics', function(req, res, next){
-	Comic.find({}, function(err, comic){
-		if (err) res.send(err);
-		else{
-			res.json(comic);
-		}
-	});
-	return next();
-});
 
-server.listen(port, function(){
-	console.log("%s listening on port %s", server.name, port);
+
+
+
+
+//configure server to listen to requests
+app.listen(8088, function(){
+	console.log('The server is running on port 8088');
 });
